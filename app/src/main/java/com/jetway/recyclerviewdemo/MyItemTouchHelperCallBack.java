@@ -77,16 +77,16 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     @Override
     public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         //dx,侧滑改变特效
-if (actionState==ItemTouchHelper.ACTION_STATE_SWIPE){
-    //设置透明度1-0
-    float result = Math.abs(dX) / viewHolder.itemView.getWidth();
-    viewHolder.itemView.setAlpha(result);
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            //设置透明度1-0
+            float result = Math.abs(dX) / viewHolder.itemView.getWidth();
+            viewHolder.itemView.setAlpha(result);
 
-    //旋转
-    viewHolder.itemView.setScaleX(result);
-    viewHolder.itemView.setScaleY(result);
+            //旋转
+            viewHolder.itemView.setScaleX(result);
+            viewHolder.itemView.setScaleY(result);
 
-}
+        }
 
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }

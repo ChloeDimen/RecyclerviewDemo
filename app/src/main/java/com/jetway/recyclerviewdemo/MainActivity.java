@@ -1,10 +1,13 @@
 package com.jetway.recyclerviewdemo;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,4 +64,10 @@ public class MainActivity extends AppCompatActivity  implements OnStartDragListe
         adapter.notifyItemRemoved(position);
         return false;
     }*/
+
+
+
+
+
+
 }

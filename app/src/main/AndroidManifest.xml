@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jetway.recyclerviewdemo">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <permission
+        android:name="android.permission.HIDE_INSTALL_PACKAGES"
+        android:protectionLevel="normal" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".BaseRecyclerActivity">
+
+        </activity>
+        <activity android:name=".MulitiActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

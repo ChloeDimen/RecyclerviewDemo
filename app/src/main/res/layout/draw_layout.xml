@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_living"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_register"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="是否开启活体："
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Switch
+            android:id="@+id/switch_living"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_living"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人脸对比阀值设置：(0-1)"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_score"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="numberDecimal"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/save_score"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="保存"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_living_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="活体阀值设置：(0-1)"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_live_score"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="numberDecimal"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/save_live_score"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="保存"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_living_data"
+        android:orientation="vertical"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:id="@+id/chooseFiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择导入文件夹"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/multi_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="批量导入" />
+        <Button
+            android:layout_marginTop="15dp"
+            android:id="@+id/multi_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除人脸数据" />
+    </LinearLayout>
+
+
+</LinearLayout>
