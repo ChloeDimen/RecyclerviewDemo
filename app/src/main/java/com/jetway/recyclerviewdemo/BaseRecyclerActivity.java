@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ private RecyclerView recycler_data;
       //  recycler_data.setAdapter(new MyRecyclerAdater());
        // recycler_data.addItemDecoration(new MyItemDecoration());
         recycler_data.addItemDecoration(new GradLayoutItemDecoration(this,R.drawable.item_drivder));
+
     }
 
     private void initDatas() {

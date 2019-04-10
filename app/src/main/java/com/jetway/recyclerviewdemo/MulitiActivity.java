@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.jetway.recyclerviewdemo.commonAdapter.MulitiSpoort;
 import com.jetway.recyclerviewdemo.commonAdapter.RecyclerviewCommonAdapter;
@@ -34,6 +35,7 @@ private List<ChatData> mChatData;
         }
         recycler_datas.setLayoutManager(new LinearLayoutManager(this));
         recycler_datas.setAdapter(new MyAdapter(this,mChatData));
+
     }
 
     private  class MyAdapter extends RecyclerviewCommonAdapter<ChatData> {
