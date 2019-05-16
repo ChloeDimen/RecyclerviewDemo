@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+   <Button
+       android:onClick="btn_base"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="基础用法"/>
+    <Button
+        android:onClick="btn_base_adapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="万能adapter和多布局"/>
+    <Button
+    android:onClick="btn_header_footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="添加头部底部"/>
+    <Button
+        android:onClick="btn_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下拉和更多的刷新"/>
+    <Button
+        android:onClick="btn_base_strag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="拖到排序,删除item"/>
+
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.jetway.recyclerviewdemo;
+package com.jetway.recyclerviewdemo.commonAdapter;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 
+import com.jetway.recyclerviewdemo.R;
 import com.jetway.recyclerviewdemo.commonAdapter.MulitiSpoort;
 import com.jetway.recyclerviewdemo.commonAdapter.RecyclerviewCommonAdapter;
 import com.jetway.recyclerviewdemo.commonAdapter.ViewHolder;

@@ -2,6 +2,8 @@ package com.jetway.recyclerviewdemo;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
@@ -20,10 +22,18 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         //方向Up,down.left,right
-        //ItemTouchHelper.UP,ItemTouchHelper.DOWN,ItemTouchHelper.LEFT,ItemTouchHelper.RIGHT
-        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;//添加上下滑动
         //int swipeFlags = 0;
-        int swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;//添加左右滑动
+        //ItemTouchHelper.UP,ItemTouchHelper.DOWN,ItemTouchHelper.LEFT,ItemTouchHelper.RIGHT
+        int swipeFlags = ItemTouchHelper.LEFT /*| ItemTouchHelper.RIGHT*/;//添加左右滑动
+        int dragFlags=0;
+        if (recyclerView.getLayoutManager() instanceof GridLayoutManager) {
+            dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN |ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;//添加上下左右滑动
+        } else {
+            dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;//添加上下滑动
+        }
+
+
+
         int flags = makeMovementFlags(dragFlags, swipeFlags);
 
 
@@ -60,6 +70,9 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
             viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getContext().getResources().getColor(R.color.colorPrimary));
 
         }
+
+
+
         super.onSelectedChanged(viewHolder, actionState);
 
     }
@@ -68,8 +81,12 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        //动画执行完毕
 
         viewHolder.itemView.setBackgroundColor(Color.WHITE);
+        //显示列表删除之后有些条目不出来  ，界面复用问题
+        //侧滑和拖拽其实都是在使用ViewCampat这个类,没有作用
+        //ViewCompat.setTranslationX(viewHolder.itemView,0);
 
         super.clearView(recyclerView, viewHolder);
     }

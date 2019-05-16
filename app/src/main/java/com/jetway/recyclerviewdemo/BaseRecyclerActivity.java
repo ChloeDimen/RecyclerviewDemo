@@ -3,8 +3,9 @@ package com.jetway.recyclerviewdemo;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +22,6 @@ import com.jetway.recyclerviewdemo.commonAdapter.ItemLongClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class BaseRecyclerActivity extends AppCompatActivity {
 private List<String>mDatas;
@@ -52,7 +51,6 @@ private RecyclerView recycler_data;
       //  recycler_data.setAdapter(new MyRecyclerAdater());
        // recycler_data.addItemDecoration(new MyItemDecoration());
         recycler_data.addItemDecoration(new GradLayoutItemDecoration(this,R.drawable.item_drivder));
-
     }
 
     private void initDatas() {

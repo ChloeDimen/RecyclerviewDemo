@@ -1,5 +1,6 @@
 package com.jetway.recyclerviewdemo.wrap;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
@@ -95,7 +96,7 @@ public class WrapRecyclerviewAdapter extends RecyclerView.Adapter<RecyclerView.V
      * 是不是底部位置
      */
     private boolean isFooterPosition(int position) {
-        return position >= (mFooters.size() + mAdapter.getItemCount());
+        return position >= (mHeaders.size() + mAdapter.getItemCount());
     }
 
     /**
@@ -108,7 +109,7 @@ public class WrapRecyclerviewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public void addHeaderView(View view) {
 
-        if (mHeaders.indexOfValue(view) == -1) {
+        if (mHeaders.indexOfValue(view) <0) {
             //集合没有就添加，不要重复添加
             mHeaders.put(BASE_HEADER_KEY++, view);
             notifyDataSetChanged();
@@ -128,7 +129,7 @@ public class WrapRecyclerviewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public void addFooterView(View view) {
 
-        if (mFooters.indexOfValue(view) == -1) {
+        if (mFooters.indexOfValue(view) <0) {
             //集合没有就添加，不要重复添加
             mFooters.put(BASE_FOOTER_KEY++, view);
             notifyDataSetChanged();
@@ -144,5 +145,24 @@ public class WrapRecyclerviewAdapter extends RecyclerView.Adapter<RecyclerView.V
             notifyDataSetChanged();
         }
 
+    }
+    /**
+     * 解决GridLayoutManager添加头部和底部不占用一行的问题
+     *
+     * @param recycler
+     * @version 1.0
+     */
+    public void adjustSpanSize(RecyclerView recycler) {
+        if (recycler.getLayoutManager() instanceof GridLayoutManager) {
+            final GridLayoutManager layoutManager = (GridLayoutManager) recycler.getLayoutManager();
+            layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    boolean isHeaderOrFooter =
+                            isHeaderPosition(position) || isFooterPosition(position);
+                    return isHeaderOrFooter ? layoutManager.getSpanCount() : 1;
+                }
+            });
+        }
     }
 }

@@ -1,19 +1,18 @@
 package com.jetway.recyclerviewdemo;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  implements OnStartDragListener /*,ItemTouchMoveListener*/ {
+public class MainActivity extends AppCompatActivity  implements OnStartDragListener /*,ItemTouchMoveListener*/{
     private RecyclerView rl_data;
 
     private List<String> number;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity  implements OnStartDragListe
         rl_data = findViewById(R.id.rl_data);
         rl_data.setLayoutManager(new LinearLayoutManager(this));
         number = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 200; i++) {
             number.add("序列号" + i);
         }
         adapter = new MyRecyclerViewAdapter(this, number,this);
@@ -35,11 +34,29 @@ public class MainActivity extends AppCompatActivity  implements OnStartDragListe
         MyItemTouchHelperCallBack callback = new MyItemTouchHelperCallBack(adapter);
          itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(rl_data);
-        //itemTouchHelper.startDrag(viewholder);用接口回调OnStartDragListener（）
-        //itemTouchHelper.startSwipe(viewholder);
+
     }
 
+    @Override
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.gridview:
+                rl_data.setLayoutManager(new GridLayoutManager(MainActivity.this,4));
+                break;
+            case R.id.listview:
+                rl_data.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                break;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
@@ -47,27 +64,19 @@ public class MainActivity extends AppCompatActivity  implements OnStartDragListe
     }
 
 
-   /* @Override
+    /*@Override
     public boolean onItemMove(int fromPosition, int toPosition) {
         //1:数据交换；  2：刷新
         Collections.swap(number,fromPosition,toPosition);
         adapter.notifyItemMoved(fromPosition,toPosition);
-
         return false;
     }
 
-
-   @Override
+    @Override
     public boolean onItemRemove(int position) {
         //1:删除数据；  2：刷新
         number.remove(position);
         adapter.notifyItemRemoved(position);
         return false;
     }*/
-
-
-
-
-
-
 }
